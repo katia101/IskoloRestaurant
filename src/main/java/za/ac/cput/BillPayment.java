@@ -23,6 +23,11 @@ public class BillPayment extends JFrame {
     private JTextField textField3;
     private JTextField textField4;
     private JTextField textField5;
+    private JTextField textField6;
+    private JTextField textField7;
+    private JTextField textField8;
+    private JTextField textField9;
+    private JTextField textField10;
 
     public BillPayment() {
 
@@ -94,7 +99,33 @@ public class BillPayment extends JFrame {
         calculateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                scanner.close();
+                int menuBurgerPrice = Integer.parseInt(textField2.getText());
+                Scanner menuBurger = new Scanner(String.valueOf(menuBurgerPrice));
+
+                int menuBevPrice = Integer.parseInt(textField3.getText());
+                Scanner menuBev = new Scanner(String.valueOf(menuBevPrice));
+
+                int menuSidePrice = Integer.parseInt(textField4.getText());
+                Scanner menuSide = new Scanner(String.valueOf(menuSidePrice));
+
+                int menuDessertPrice = Integer.parseInt(textField5.getText());
+                Scanner menuDessert = new Scanner(String.valueOf(menuDessertPrice));
+
+                int tip = Integer.parseInt(textField1.getText());
+                Scanner tipPrice = new Scanner(String.valueOf(tip));
+
+
+                int totalPrice ;
+
+                totalPrice = menuBurgerPrice+ menuBevPrice + menuSidePrice + menuDessertPrice +tip;
+
+                textField6.setText(String.valueOf(totalPrice));
+
+
+
+
+
+
 
 
             }
@@ -113,14 +144,15 @@ public class BillPayment extends JFrame {
 
                 //int price1 = comboBox1.getSelectedIndex();
                // textField2.setText(String.valueOf(price1));
-
-
+                int chickenBurger = 70;
+                int beefBurger = 85;
+                int veganBurger = 99;
                 if (comboBox1.getSelectedIndex() == 1){
-                    textField2.setText("70");
+                    textField2.setText(String.valueOf(chickenBurger));
                 }else if (comboBox1.getSelectedIndex() == 2){
-                    textField2.setText("85");
+                    textField2.setText(String.valueOf(beefBurger));
                 }else if (comboBox1.getSelectedIndex() == 3){
-                    textField2.setText("99");
+                    textField2.setText(String.valueOf(veganBurger));
                 }
 
 
@@ -133,16 +165,16 @@ public class BillPayment extends JFrame {
                // String combo2 = comboBox2.getSelectedItem().toString();
                // textField3.setText(combo2);
                 //Combo2
-                //        int water = 15;
-                //        int alcohol = 20;
-                //        int drink = 18;
+                        int water = 15;
+                        int alcohol = 20;
+                        int drink = 18;
 
                 if (comboBox2.getSelectedIndex() == 1){
-                    textField3.setText("12");
+                    textField3.setText(String.valueOf(water));
                 }else if (comboBox2.getSelectedIndex() == 2){
-                    textField3.setText("20");
+                    textField3.setText(String.valueOf(alcohol));
                 }else if (comboBox2.getSelectedIndex() == 3){
-                    textField3.setText("18");
+                    textField3.setText(String.valueOf(drink));
                 }
             }
         });
@@ -156,15 +188,15 @@ public class BillPayment extends JFrame {
                 //textField4.setText(combo3);
                 //
                 //        //Combo3
-                //        int mac = 45;ff
-                //        int wings = 40;
-                //        int salad = 30;
+                        int mac = 45;
+                        int wings = 40;
+                        int salad = 30;
                 if (comboBox3.getSelectedIndex() == 1){
-                    textField4.setText("45");
+                    textField4.setText(String.valueOf(mac));
                 }else if (comboBox3.getSelectedIndex() == 2){
-                    textField4.setText("40");
+                    textField4.setText(String.valueOf(wings));
                 }else if (comboBox3.getSelectedIndex() == 3){
-                    textField4.setText("30");
+                    textField4.setText(String.valueOf(salad));
                 }
             }
         });
@@ -175,16 +207,16 @@ public class BillPayment extends JFrame {
               // String combo4 = comboBox4.getSelectedItem().toString();
                 //textField5.setText(combo4);
                 //        //Combo4
-                //        int cheese = 25;
-                //        int malva = 30;
-                //        int cake = 25;
+                        int cheese = 25;
+                        int malva = 30;
+                        int cake = 23;
 
                 if (comboBox4.getSelectedIndex() == 1){
-                    textField5.setText("45");
+                    textField5.setText(String.valueOf(cheese));
                 }else if (comboBox4.getSelectedIndex() == 2){
-                    textField5.setText("40");
+                    textField5.setText(String.valueOf(malva));
                 }else if (comboBox4.getSelectedIndex() == 3){
-                    textField5.setText("30");
+                    textField5.setText(String.valueOf(cake));
                 }
             }
         });
