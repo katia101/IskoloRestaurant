@@ -23,11 +23,19 @@ public class BillPayment extends JFrame {
     private JTextField textField3;
     private JTextField textField4;
     private JTextField textField5;
-    private JTextField textField6;
+    private JComboBox comboBox5;
+    private JComboBox comboBox6;
+    private JComboBox comboBox7;
+    private JComboBox comboBox8;
     private JTextField textField7;
     private JTextField textField8;
     private JTextField textField9;
     private JTextField textField10;
+    private JTextField textField11;
+    private JLabel lblChange;
+    private JTextField textField6;
+    private JLabel Prices;
+    private JLabel lblOrder;
 
     public BillPayment() {
 
@@ -52,27 +60,7 @@ public class BillPayment extends JFrame {
         comboBox4.addItem("Cake");
 
 
-        //Combo1
-        //int comboBox1.setSelectedIndex(1) = 35;
-//        String combo1 = comboBox1.getSelectedItem().toString();
-//        textField2.setText(combo1);
 
-//        int vegan = 50;
-//
-//        //Combo2
-//        int water = 15;
-//        int alcohol = 20;
-//        int drink = 18;
-//
-//        //Combo3
-//        int mac = 45;ff
-//        int wings = 40;
-//        int salad = 30;
-//
-//        //Combo4
-//        int cheese = 25;
-//        int malva = 30;
-//        int cake = 25;
 
         setContentPane(billPanel);
         setTitle("Welcome");
@@ -99,33 +87,21 @@ public class BillPayment extends JFrame {
         calculateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int menuBurgerPrice = Integer.parseInt(textField2.getText());
-                Scanner menuBurger = new Scanner(String.valueOf(menuBurgerPrice));
+                int total = Integer.parseInt(textField6.getText());
+                Scanner change = new Scanner(String.valueOf(total));
 
-                int menuBevPrice = Integer.parseInt(textField3.getText());
-                Scanner menuBev = new Scanner(String.valueOf(menuBevPrice));
+                int amountPaid = Integer.parseInt(textField7.getText());
+                Scanner scAmount = new Scanner(String.valueOf(amountPaid));
 
-                int menuSidePrice = Integer.parseInt(textField4.getText());
-                Scanner menuSide = new Scanner(String.valueOf(menuSidePrice));
+                int totalAmount = 0;
 
-                int menuDessertPrice = Integer.parseInt(textField5.getText());
-                Scanner menuDessert = new Scanner(String.valueOf(menuDessertPrice));
-
-                int tip = Integer.parseInt(textField1.getText());
-                Scanner tipPrice = new Scanner(String.valueOf(tip));
-
-
-                int totalPrice ;
-
-                totalPrice = menuBurgerPrice+ menuBevPrice + menuSidePrice + menuDessertPrice +tip;
-
-                textField6.setText(String.valueOf(totalPrice));
-
-
-
-
-
-
+                if (amountPaid < total){
+                    textField7.setText(String.valueOf(" Declined: not enough money"));
+                } else
+                {
+                    totalAmount = amountPaid - total;
+                    lblChange.setText(String.valueOf("Change: R " + totalAmount));
+                }
 
 
             }
@@ -134,16 +110,6 @@ public class BillPayment extends JFrame {
         comboBox1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-
-//                String combo1 = comboBox1.getSelectedItem().toString();
-//                textField2.setText(combo1);
-
-//                int price = comboBox1.getSelectedIndex();
-//                textField2.setText(String.valueOf(price));
-
-                //int price1 = comboBox1.getSelectedIndex();
-               // textField2.setText(String.valueOf(price1));
                 int chickenBurger = 70;
                 int beefBurger = 85;
                 int veganBurger = 99;
@@ -162,9 +128,6 @@ public class BillPayment extends JFrame {
         comboBox2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               // String combo2 = comboBox2.getSelectedItem().toString();
-               // textField3.setText(combo2);
-                //Combo2
                         int water = 15;
                         int alcohol = 20;
                         int drink = 18;
@@ -184,10 +147,6 @@ public class BillPayment extends JFrame {
         comboBox3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //String combo3 = comboBox3.getSelectedItem().toString();
-                //textField4.setText(combo3);
-                //
-                //        //Combo3
                         int mac = 45;
                         int wings = 40;
                         int salad = 30;
@@ -204,22 +163,117 @@ public class BillPayment extends JFrame {
         comboBox4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              // String combo4 = comboBox4.getSelectedItem().toString();
-                //textField5.setText(combo4);
-                //        //Combo4
                         int cheese = 25;
                         int malva = 30;
                         int cake = 23;
 
                 if (comboBox4.getSelectedIndex() == 1){
                     textField5.setText(String.valueOf(cheese));
-                }else if (comboBox4.getSelectedIndex() == 2){
+                    int menuBurgerPrice = Integer.parseInt(textField2.getText());
+                    int menuBurgerQty = Integer.parseInt(textField8.getText());
+                    Scanner menuBurger = new Scanner(String.valueOf(menuBurgerPrice));
+
+                    int menuBevPrice = Integer.parseInt(textField3.getText());
+                    int menuBevQty = Integer.parseInt(textField9.getText());
+                    Scanner menuBev = new Scanner(String.valueOf(menuBevPrice));
+
+                    int menuSidePrice = Integer.parseInt(textField4.getText());
+                    int menuSideQty = Integer.parseInt(textField10.getText());
+                    Scanner menuSide = new Scanner(String.valueOf(menuSidePrice));
+
+                    int menuDessertPrice = Integer.parseInt(textField5.getText());
+                    int menuDessertQty = Integer.parseInt(textField11.getText());
+                    Scanner menuDessert = new Scanner(String.valueOf(menuDessertPrice));
+
+
+                    int tip = Integer.parseInt(textField1.getText());
+                    Scanner totalTip = new Scanner(String.valueOf(tip));
+
+
+                    int totalPrice = 0 ;
+
+                    int menuQtyPrice = menuBurgerPrice * menuBurgerQty;
+                    int menuBevQtyPrice = menuBevPrice * menuBevQty;
+                    int menuSideQtyPrice = menuSidePrice * menuSideQty;
+                    int menuDessertQtyPrice = menuDessertPrice * menuDessertQty;
+
+                    totalPrice = menuQtyPrice + menuBevQtyPrice + menuSideQtyPrice + menuDessertQtyPrice + tip;
+                    textField6.setText(String.valueOf(totalPrice));
+
+                }
+                else if (comboBox4.getSelectedIndex() == 2)
+                {
                     textField5.setText(String.valueOf(malva));
-                }else if (comboBox4.getSelectedIndex() == 3){
+                    int menuBurgerPrice = Integer.parseInt(textField2.getText());
+                    int menuBurgerQty = Integer.parseInt(textField8.getText());
+                    Scanner menuBurger = new Scanner(String.valueOf(menuBurgerPrice));
+
+                    int menuBevPrice = Integer.parseInt(textField3.getText());
+                    int menuBevQty = Integer.parseInt(textField9.getText());
+                    Scanner menuBev = new Scanner(String.valueOf(menuBevPrice));
+
+                    int menuSidePrice = Integer.parseInt(textField4.getText());
+                    int menuSideQty = Integer.parseInt(textField10.getText());
+                    Scanner menuSide = new Scanner(String.valueOf(menuSidePrice));
+
+                    int menuDessertPrice = Integer.parseInt(textField5.getText());
+                    int menuDessertQty = Integer.parseInt(textField11.getText());
+                    Scanner menuDessert = new Scanner(String.valueOf(menuDessertPrice));
+
+                    int tip = Integer.parseInt(textField1.getText());
+                    Scanner totalTip = new Scanner(String.valueOf(tip));
+
+
+                    int totalPrice = 0 ;
+
+                    int menuQtyPrice = menuBurgerPrice * menuBurgerQty;
+                    int menuBevQtyPrice = menuBevPrice * menuBevQty;
+                    int menuSideQtyPrice = menuSidePrice * menuSideQty;
+                    int menuDessertQtyPrice = menuDessertPrice * menuDessertQty;
+
+                    totalPrice = menuQtyPrice + menuBevQtyPrice + menuSideQtyPrice + menuDessertQtyPrice + tip;
+
+                    textField6.setText(String.valueOf(totalPrice));
+
+                }
+                else if (comboBox4.getSelectedIndex() == 3){
                     textField5.setText(String.valueOf(cake));
+                    int menuBurgerPrice = Integer.parseInt(textField2.getText());
+                    int menuBurgerQty = Integer.parseInt(textField8.getText());
+                    Scanner menuBurger = new Scanner(String.valueOf(menuBurgerPrice));
+
+                    int menuBevPrice = Integer.parseInt(textField3.getText());
+                    int menuBevQty = Integer.parseInt(textField9.getText());
+                    Scanner menuBev = new Scanner(String.valueOf(menuBevPrice));
+
+                    int menuSidePrice = Integer.parseInt(textField4.getText());
+                    int menuSideQty = Integer.parseInt(textField10.getText());
+                    Scanner menuSide = new Scanner(String.valueOf(menuSidePrice));
+
+                    int menuDessertPrice = Integer.parseInt(textField5.getText());
+                    int menuDessertQty = Integer.parseInt(textField11.getText());
+                    Scanner menuDessert = new Scanner(String.valueOf(menuDessertPrice));
+
+                    int tip = Integer.parseInt(textField1.getText());
+                    Scanner totalTip = new Scanner(String.valueOf(tip));
+
+
+                    int totalPrice = 0 ;
+
+                    int menuQtyPrice = menuBurgerPrice * menuBurgerQty;
+                    int menuBevQtyPrice = menuBevPrice * menuBevQty;
+                    int menuSideQtyPrice = menuSidePrice * menuSideQty;
+                    int menuDessertQtyPrice = menuDessertPrice * menuDessertQty;
+
+                    totalPrice = menuQtyPrice + menuBevQtyPrice + menuSideQtyPrice + menuDessertQtyPrice + tip;
+
+                    textField6.setText(String.valueOf(totalPrice));
                 }
             }
         });
+
+
+
     }
 
     public static void main(String[] args) {
